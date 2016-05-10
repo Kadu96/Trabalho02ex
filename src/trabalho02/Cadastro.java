@@ -11,15 +11,17 @@ public class Cadastro  {
  
 	private Scanner ler = new Scanner(System.in);
 	private List<Pessoa> pessoas;
-    private List<Dependente> dependentes;
+    	private List<Dependente> dependentes;
 	private BufferedWriter gravar;
 	private static final String nomeArquivo = "c:\\bd\\bd.txt"; 
 	
 	public Cadastro() {
 		pessoas = new ArrayList<Pessoa>();
 		boolean continua = true;
-	    String sn;
-	     
+	    	String sn;
+	     	String Sim = "S";
+	     	String Nao = "N";
+	     	
 		do {
 
 			Pessoa p = new Pessoa();
@@ -39,16 +41,14 @@ public class Cadastro  {
 			
 			System.out.print("Esta pessoa possui denpendentes? (S/N): ");
 			sn = ler.next();
-			
-            String Char;
-			while (Character.toUpperCase(sn.charAt(0)) != 'S' && Character.toUpperCase(sn.charAt(0)) !=  'N'){			
-            	System.out.print("Esta pessoa possui denpendentes? (S/N): ");
-    			sn = ler.next();
-    			
-            }
+		
+			while ((!sn.equalsIgnoreCase(Sim)) && (!sn.equalsIgnoreCase(Nao)){			
+            			System.out.print("Esta pessoa possui denpendentes? (S/N): ");
+    				sn = ler.next();
+    			}
            
 			   
-			while ((Character.toUpperCase(sn.charAt(0)) == 'S' )&& ( sn.length() == 1)) {
+			while (sn.equalsIgnoreCase(Sim) {
 				dependentes = new ArrayList<Dependente>();
 	                
 				Dependente dep = new Dependente();
@@ -57,7 +57,7 @@ public class Cadastro  {
 				dep.setNomeDependente(ler.next());
 				System.out.print("Informe a idade: ");
 				dep.setNomeDependente(ler.next());
-				System.out.print("Relação de parentesco:");
+				System.out.print("RelaÃ§Ã£o de parentesco:");
 				dep.setNomeDependente(ler.next());
 				
 				
@@ -69,13 +69,10 @@ public class Cadastro  {
 				sn = ler.next();
 			
 			
-	            while ( (sn.length() != 1 ) && (Character.toUpperCase(sn.charAt(0)) != 'S' )&& ( Character.toUpperCase(sn.charAt(0))) !=  'N' ){			
-	            	System.out.print("Esta pessoa possui denpendentes? (S/N): ");
-	    			sn = ler.next();
-	    			
-	            }
-				
-			
+	        		while ( (!sn.equalsIgnoreCase(Sim)) && (!sn.equalsIgnoreCase(Nao)){			
+	            			System.out.print("Esta pessoa possui denpendentes? (S/N): ");
+	    				sn = ler.next();
+	    			}
 			}
 			
 			
@@ -85,14 +82,14 @@ public class Cadastro  {
 			
 			System.out.print("Deseja inserir outra pessoa? (S/N): ");
 			sn = ler.next();
-            while (Character.toUpperCase(sn.charAt(0)) != 'S' && Character.toUpperCase(sn.charAt(0)) !=  'N' && sn.length() != 0){			
-            	System.out.print("Deseja inserir outra pessoa? (S/N): ");
-    			sn = ler.next();
-    			
-            }
+			
+            		while ((!sn.equalsIgnoreCase(Sim)) && (!sn.equalsIgnoreCase(Nao)){			
+            			System.out.print("Deseja inserir outra pessoa? (S/N): ");
+    				sn = ler.next();
+    			}
 			
 			
-			if ( Character.toUpperCase(sn.charAt(0)) ==  'N' && sn.length() == 1) {
+			if (sn.equalsIgnoreCase(Nao)) {
 				continua = false;
 				try {
 					gravar = new BufferedWriter(new FileWriter(nomeArquivo));
